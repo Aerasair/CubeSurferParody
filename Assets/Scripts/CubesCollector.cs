@@ -36,7 +36,6 @@ public class CubesCollector : MonoBehaviour
         }
     }
 
-
     private void AddCubeToCollection(CollectingCube cube)
     {
         cube.gameObject.transform.parent = _collectionCubes; 
@@ -54,11 +53,13 @@ public class CubesCollector : MonoBehaviour
 
         cubeCollected.gameObject.transform.SetParent(_transformForNoParent);
 
+        _targetCube.localPosition = new Vector3(_targetCube.localPosition.x, _targetCube.localPosition.y + _heightCube, _targetCube.localPosition.z);
+
         listCubes.Remove(cubeCollected);
     }
 
     //перенести в другой класс
-    private void UpdatePosPlayer(float heightCube)
+    private void UpdatePosPlayer(float heightCube)//только вверх работает
     {
         _player.gameObject.transform.position = new Vector3(_player.position.x, _player.position.y + heightCube, _player.position.z); 
     }

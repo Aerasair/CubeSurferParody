@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5670934841292397858
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 546008933}
   _joystick: {fileID: 0}
-  _moveSpeed: 6
+  _speedLeftRight: 0
   _speedForward: 10
 --- !u!114 &174031862
 MonoBehaviour:
@@ -189,6 +189,9 @@ MonoBehaviour:
   _player: {fileID: 6221359478175682231}
   _collectionCubes: {fileID: 0}
   _targetCube: {fileID: 0}
+  _transformForNoParent: {fileID: 0}
+  _heightCube: 0
+  listCubes: []
 --- !u!1 &7284858032759345979
 GameObject:
   m_ObjectHideFlags: 0
