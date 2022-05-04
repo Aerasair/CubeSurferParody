@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _roadWidth;
 
+    private float _heightPlayerModel = 0.5f;
+
     private void FixedUpdate()
     {
         Vector3 nextPosition = new Vector3(_joystick.Horizontal * _leftRightSpeed, _rigidbodyPlayer.velocity.y, 0);
@@ -30,15 +32,20 @@ public class PlayerController : MonoBehaviour
         return value;
     }
     
-    public void PlayerUP(int countCubes, float heightCube)
+    public void PlayerUPByCubes(int countCubes, float heightCube)
     {
-        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube)+heightCube+0.5f, _rigidbodyPlayer.transform.position.z);
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube) + heightCube+  _heightPlayerModel, _rigidbodyPlayer.transform.position.z);
+    }
+
+    public void PlayerUPByTransform(float heightCube)
+    {
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, _rigidbodyPlayer.transform.position.y + heightCube, _rigidbodyPlayer.transform.position.z);
     }
 
 
     public void PlayerDown(int countCubes, float heightCube)
     {
-        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube) - heightCube + 0.5f, _rigidbodyPlayer.transform.position.z);
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube) - heightCube + _heightPlayerModel, _rigidbodyPlayer.transform.position.z);
     }
 
 

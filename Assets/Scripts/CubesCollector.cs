@@ -26,9 +26,15 @@ public class CubesCollector : MonoBehaviour
         {
             if (cube.gameObject.transform.parent != _transformPlayerCollectionCubes)
             {
-                playerController.PlayerUP(_listCubes.Count(),_heightCube);
+                playerController.PlayerUPByCubes(_listCubes.Count(),_heightCube);
                 AddCubeToCollection(cube);
             }
+        }
+
+        //Разнести условия по методам
+        if (collision.gameObject.TryGetComponent(out Ramps ramp))
+        {
+            playerController.PlayerUPByTransform(_heightCube);
         }
 
         if (collision.gameObject.TryGetComponent(out WallCube wallCube))
@@ -45,7 +51,13 @@ public class CubesCollector : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out WallCube wallCube))
             playerController.PlayerDown(_listCubes.Count, _heightCube);
+
+        if (collision.gameObject.TryGetComponent(out Ramps ramp))
+        {
+            RemoveCubeFromCollection();
+        }
     }
+
 
     private void OnTriggerExit(Collider other)
     {
