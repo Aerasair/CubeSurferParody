@@ -1,26 +1,21 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbodyPlayer;
-    [SerializeField] private Rigidbody _rbCamera;
     [SerializeField] private FixedJoystick _joystick;
 
     [SerializeField] private float _leftRightSpeed;
-    [SerializeField] private float _forwardSpeed;
 
     [SerializeField] private float _roadWidth;
 
     private void FixedUpdate()
     {
-        _rbCamera.velocity = new Vector3(_rbCamera.velocity.x, _rbCamera.velocity.y, _forwardSpeed-0.1f);
-
-        Vector3 nextPosition = new Vector3(_joystick.Horizontal * _leftRightSpeed, _rigidbodyPlayer.velocity.y, _forwardSpeed);
+        Vector3 nextPosition = new Vector3(_joystick.Horizontal * _leftRightSpeed, _rigidbodyPlayer.velocity.y, 0);
         if (CheckIsBound(_rigidbodyPlayer.transform.position.x, _joystick.Horizontal))
             _rigidbodyPlayer.velocity = nextPosition;
         else
-              _rigidbodyPlayer.velocity = new Vector3(0, 0, _forwardSpeed); ;
+              _rigidbodyPlayer.velocity = new Vector3(0, 0, 0); 
     }
 
     private bool CheckIsBound(float nextPositionX, float horizontal)
@@ -35,13 +30,16 @@ public class PlayerController : MonoBehaviour
         return value;
     }
     
-    public void UpPositionPlayer(float heightCube)
+    public void PlayerUP(int countCubes, float heightCube)
     {
-        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, _rigidbodyPlayer.transform.position.y + heightCube, _rigidbodyPlayer.transform.position.z);
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube)+heightCube+0.5f, _rigidbodyPlayer.transform.position.z);
     }
 
-    public void DownPositionPlayer(int countCubes, float heightCube)
+
+    public void PlayerDown(int countCubes, float heightCube)
     {
-        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, countCubes * heightCube + heightCube, _rigidbodyPlayer.transform.position.z);
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, ((countCubes + 1) * heightCube) - heightCube + 0.5f, _rigidbodyPlayer.transform.position.z);
     }
+
+
 }

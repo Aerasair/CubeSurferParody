@@ -5,8 +5,7 @@ using UnityEngine;
 public class CubesCollector : MonoBehaviour
 {
     [SerializeField] private GameObject _playerControllerGO;
-    [SerializeField] private Transform _collectionCubes;
-    [SerializeField] private Transform _targetCube;
+    [SerializeField] private Transform _transformPlayerCollectionCubes;
     [SerializeField] private Transform _transformForNoParent;
 
     [SerializeField] private float _heightCube;
@@ -25,9 +24,9 @@ public class CubesCollector : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out CollectingCube cube))
         {
-            if (cube.gameObject.transform.parent != _collectionCubes)
+            if (cube.gameObject.transform.parent != _transformPlayerCollectionCubes)
             {
-                playerController.UpPositionPlayer(_heightCube);
+                playerController.PlayerUP(_listCubes.Count(),_heightCube);
                 AddCubeToCollection(cube);
             }
         }
@@ -45,30 +44,31 @@ public class CubesCollector : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out WallCube wallCube))
-            playerController.DownPositionPlayer(_listCubes.Count, _heightCube);
+            playerController.PlayerDown(_listCubes.Count, _heightCube);
     }
 
-  
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out WallCube wallCube))
+            playerController.PlayerDown(_listCubes.Count, _heightCube);
+    }
 
     private void AddCubeToCollection(CollectingCube cube)
     {
-        cube.gameObject.transform.parent = _collectionCubes; 
-        cube.transform.localPosition = _targetCube.localPosition;
-
-        _targetCube.localPosition = new Vector3(_targetCube.localPosition.x, _targetCube.localPosition.y - _heightCube, _targetCube.localPosition.z);
-
         _listCubes.Add(cube);
+
+        cube.gameObject.transform.parent = _transformPlayerCollectionCubes; 
+        cube.transform.localPosition = new Vector3(0, -1*(_heightCube*(_listCubes.Count()+1)),0);
     }
+
 
     private void RemoveCubeFromCollection()
     {
         CollectingCube cubeCollected = _listCubes.Last();
-        _listCubes.Last().GetComponent<BoxCollider>().isTrigger = true;
+
+        cubeCollected.GetComponent<BoxCollider>().isTrigger = true;
 
         cubeCollected.gameObject.transform.SetParent(_transformForNoParent);
-
-        _targetCube.localPosition = new Vector3(_targetCube.localPosition.x, _targetCube.localPosition.y + _heightCube, _targetCube.localPosition.z);
-
         _listCubes.Remove(cubeCollected);
     }
 
