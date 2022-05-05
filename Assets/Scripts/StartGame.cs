@@ -8,7 +8,6 @@ public class StartGame : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-
     public void Play()
     {
         Time.timeScale = 1f;
