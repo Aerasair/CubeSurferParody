@@ -32,10 +32,10 @@ public class CubesCollector : MonoBehaviour
         }
 
         //Разнести условия по методам
-        if (collision.gameObject.TryGetComponent(out Ramps ramp))
-        {
-            playerController.PlayerUPByTransform(_heightCube);
-        }
+        //if (collision.gameObject.TryGetComponent(out Ramps ramp))
+        //{
+           
+        //}
 
         if (collision.gameObject.TryGetComponent(out WallCube wallCube))
         {
@@ -54,6 +54,7 @@ public class CubesCollector : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent(out Ramps ramp))
         {
+            playerController.PlayerUPByTransform(_heightCube);
             RemoveCubeFromCollection();
         }
     }

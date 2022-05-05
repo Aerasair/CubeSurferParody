@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerUPByTransform(float heightCube)
     {
-        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, _rigidbodyPlayer.transform.position.y + heightCube, _rigidbodyPlayer.transform.position.z);
+        _rigidbodyPlayer.transform.position = new Vector3(_rigidbodyPlayer.transform.position.x, _rigidbodyPlayer.transform.position.y, _rigidbodyPlayer.transform.position.z);
     }
 
 
