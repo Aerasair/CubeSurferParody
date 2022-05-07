@@ -74,6 +74,7 @@ public class CubesCollector : MonoBehaviour
 
         cube.gameObject.transform.parent = _transformPlayerCollectionCubes; 
         cube.transform.localPosition = new Vector3(0, -1*(_heightCube*(_listCubes.Count()+1)),0);
+        cube.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
     }
 
 

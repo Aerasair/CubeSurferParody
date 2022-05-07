@@ -2690,6 +2690,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724978405}
   m_Mesh: {fileID: -5495902117074765545, guid: fd25edf0dc24d4aed96cd5419e65e154, type: 3}
+--- !u!1 &741739341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741739342}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741739342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741739341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1779984055}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769693133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -4687,6 +4717,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 2.5, z: 20}
   m_Center: {x: 0, y: -1.25, z: 10}
+--- !u!1 &1230614094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3737977465848018830, guid: 62d08616ed182ee4f9617e6eaa51ec54, type: 3}
+  m_PrefabInstance: {fileID: 596508876363068834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1230614098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230614094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b235e02cdabcbb4f9954ab66294082d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swerveSpeed: 0.5
+  maxSwerveAmount: 1
+  _roadWidth: 1.8
+  _transformCenter: {fileID: 741739342}
+--- !u!114 &1230614099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230614094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733b49f575292f3479ad7d3995c80820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1234760008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,8 +5332,8 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -1.6263169, y: 0, z: -0.27062786}
-      - {x: -1.4700086, y: 0, z: 13.681314}
+      - {x: -1.3972168, y: -0.00003695488, z: -1.2751868}
+      - {x: -1.2409085, y: -0.00003695488, z: 12.676756}
       - {x: -1.3136775, y: 0, z: 53.034748}
       - {x: -1.2589062, y: 0, z: 78.68209}
       - {x: -2.547892, y: 0, z: 81.7301}
@@ -5349,7 +5412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c744c93c9f78fa44ab61a3ca2891602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 0
   _playerParent: {fileID: 1779984055}
   _pathCreator: {fileID: 1478186228}
 --- !u!1 &1478653537
@@ -6578,6 +6641,7 @@ Transform:
   - {fileID: 963194228}
   - {fileID: 51404952}
   - {fileID: 1706305748}
+  - {fileID: 741739342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6588,7 +6652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779984054}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ba725fe304af744803d99c0b40b3c3, type: 3}
   m_Name: 
@@ -6853,6 +6917,10 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: axisOptions
