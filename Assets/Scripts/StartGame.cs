@@ -13,4 +13,9 @@ public class StartGame : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
     }
+
+    public void Reload()
+    {
+        Application.LoadLevel(0);
+    }
 }
