@@ -8,6 +8,8 @@ public class SwerveInputSystem : MonoBehaviour
 
     private void Update()
     {
+        // эти инпуты не будут работыть на мобилке, делай все через юи, посмотри что такое DragHandlers
+        // если есть джойтсик, зачем инпуты
         if (Input.GetMouseButtonDown(0))
         {
             _lastFrameFingerPositionX = Input.mousePosition.x;

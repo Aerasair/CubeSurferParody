@@ -5,6 +5,9 @@ using PathCreation;
 
 public class PathFollower : MonoBehaviour
 {
+    
+    //соблюдай порядок полей везде одинаковый и разделяй логически пустыми сттроками части кода
+    // приватные поля не называем с _ зачастую с маленькой бучквы просто, геттеры с большой
     [SerializeField] private float _speed;
     [SerializeField] private Transform _playerParent;
 
