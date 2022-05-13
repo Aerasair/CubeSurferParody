@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    // странное решение ждать импука игрока серез тайм скейл,вынес бы в активаторе в коде игрока, тип пока там фолс игрок не двигается
+    [SerializeField] private Button startBtn, restartBtn;
+    [SerializeField] private PathFollower pathFollower;
+
     private void Start()
     {
-        Time.timeScale = 0f;
+        startBtn.onClick.AddListener(Play);
+        restartBtn.onClick.AddListener(Restart);
     }
 
-    // кнопки через инспектор не таскаем, все подписвыается в коде
-    // yourButton.AddListener(()=> Play);
     public void Play()
     {
-        Time.timeScale = 1f;
-        gameObject.SetActive(false);
+        pathFollower.IsMoving = true;
+        startBtn.gameObject.SetActive(false);
     }
 
-    public void Reload()
+    public void Restart()
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 }

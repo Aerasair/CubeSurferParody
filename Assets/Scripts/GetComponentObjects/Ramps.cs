@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class Ramps : MonoBehaviour
 {
-    //Object for TryGetComponent
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.TryGetComponent(out CubesCollector player))
+        {
+            player.RemoveCubeFromCollection();
+        }
+    }
 }

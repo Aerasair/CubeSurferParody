@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.Events;
 
 public class PathFollower : MonoBehaviour
 {
-    
-    //соблюдай порядок полей везде одинаковый и разделяй логически пустыми сттроками части кода
-    // приватные поля не называем с _ зачастую с маленькой бучквы просто, геттеры с большой
-    [SerializeField] private float _speed;
-    [SerializeField] private Transform _playerParent;
+    [SerializeField] private float speed;
+    [SerializeField] private Transform playerParent;
+    [SerializeField] private PathCreator pathCreator;
 
-    [SerializeField] private PathCreator _pathCreator;
-    private float _distanceTravalled;
+    public bool IsMoving = false;
+    private float distanceTravalled;
     
+
     private void Update()
     {
-        _distanceTravalled += _speed * Time.deltaTime;
-        _playerParent.position = _pathCreator.path.GetPointAtDistance(_distanceTravalled);
-        _playerParent.rotation = _pathCreator.path.GetRotationAtDistance(_distanceTravalled);
+        if (IsMoving)
+        {
+            distanceTravalled += speed * Time.deltaTime;
+            playerParent.position = pathCreator.path.GetPointAtDistance(distanceTravalled);
+            playerParent.rotation = pathCreator.path.GetRotationAtDistance(distanceTravalled);
+        }
     }
 }
